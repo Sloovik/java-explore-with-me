@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-
     @Query("SELECT c FROM Category c")
     List<Category> findAllCategories(Pageable pageable);
 

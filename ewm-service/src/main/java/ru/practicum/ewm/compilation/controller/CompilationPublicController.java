@@ -23,7 +23,7 @@ public class CompilationPublicController {
     private final CompilationPublicService compilationPublicService;
 
     @GetMapping
-    List<CompilationDto> getCompilations(@RequestParam(required = false) Boolean pinned,
+    public List<CompilationDto> getCompilations(@RequestParam(required = false) Boolean pinned,
                                          @RequestParam(defaultValue = "0") @PositiveOrZero Integer from,
                                          @RequestParam(defaultValue = "10") @Positive Integer size) {
         Pageable pageable = PageRequest.of(from / size, size);
@@ -32,7 +32,7 @@ public class CompilationPublicController {
     }
 
     @GetMapping("/{compilationId}")
-    CompilationDto getCompilation(@PathVariable Long compilationId) {
+    public CompilationDto getCompilation(@PathVariable Long compilationId) {
         return compilationPublicService.getCompilation(compilationId);
     }
 

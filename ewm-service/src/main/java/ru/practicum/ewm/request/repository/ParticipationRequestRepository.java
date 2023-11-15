@@ -35,4 +35,6 @@ public interface ParticipationRequestRepository extends JpaRepository<Participat
             "AND pr.status = 'CONFIRMED' ")
     List<ParticipationRequest> findConfirmedRequestsForEventList(List<Long> eventIds);
 
+
+
 }

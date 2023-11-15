@@ -22,8 +22,8 @@ public class CategoryPublicController {
     private final CategoryPublicService categoryPublicService;
 
     @GetMapping
-    public List<Category> findAll(@PositiveOrZero @RequestParam(defaultValue = "0") int from,
-                                  @Positive @RequestParam(defaultValue = "10") int size) {
+    public List<Category> findAll(@RequestParam(defaultValue = "0") @PositiveOrZero int from,
+                                  @RequestParam(defaultValue = "10") @Positive int size) {
         Pageable pageable = PageRequest.of(from / size, size, Sort.by("id"));
 
         return categoryPublicService.findAll(pageable);

@@ -8,11 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import ru.practicum.ewm.event.model.Event;
-import ru.practicum.ewm.exception.StatsParseException;
-import ru.practicum.ewm.StatsClient;
 import ru.practicum.ewm.StatRequest;
 import ru.practicum.ewm.StatResponse;
+import ru.practicum.ewm.StatsClient;
+import ru.practicum.ewm.event.model.Event;
+import ru.practicum.ewm.exception.StatsParseException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
@@ -33,6 +33,7 @@ public class StatsClientServiceImpl implements StatsClientService {
     @Value("${app_name}")
     private String app;
 
+    @Override
     public Long getViewCountForEvent(Event event) {
         log.info("StatsClientServiceImpl. getViewCountForEvent. Params: event: {};", event);
 
@@ -58,6 +59,7 @@ public class StatsClientServiceImpl implements StatsClientService {
         }
     }
 
+    @Override
     public Map<Long, Long> getViewCountForEvents(List<Event> events) {
         log.info("StatsClientServiceImpl. getViewCountForEventList. Params: events: {};", events);
 
@@ -99,6 +101,7 @@ public class StatsClientServiceImpl implements StatsClientService {
         }
     }
 
+    @Override
     public void addHits(HttpServletRequest request) {
         log.info("StatsClientServiceImpl. getViewCountForEventList. request: {}; getRequestURI: {};", request, request.getRequestURI());
 
