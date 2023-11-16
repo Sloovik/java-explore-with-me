@@ -13,6 +13,8 @@ public interface EventUtilService {
 
     Map<Long, Long> getConfirmedRequestForEventList(List<Event> events);
 
+    EventShortDto getEventShortDto(Event event);
+
     List<EventShortDto> getEventShortDtos(List<Event> events);
 
     List<EventFullDto> getEventFullDtos(List<Event> events);
