@@ -48,6 +48,14 @@ public class EventUtilServiceImpl implements EventUtilService {
     }
 
     @Override
+    public EventShortDto getEventShortDto(Event event) {
+        Long views = statsClientService.getViewCountForEvent(event);
+        Long requests = Long.valueOf(getConfirmedRequestForEvent(event));
+
+        return EventMapper.toEventShortDto(views, requests, event);
+    }
+
+    @Override
     public List<EventShortDto> getEventShortDtos(List<Event> events) {
         Map<Long, Long> views = statsClientService.getViewCountForEvents(events);
         Map<Long, Long> requests = getConfirmedRequestForEventList(events);
